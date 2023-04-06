@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 80px auto auto;
+    grid-template-areas: "h h"
+                         "c c"
+                         "r r";
+                         
+}
+
+header{
+    grid-area: h;
+    background-color: #9B93FC;
+    padding: 10px;
+    display: flex;
+}
+
+.maior{
+    background-color: #C3B9FF;
+}
+
+main{
+    grid-area: c;
+    padding: 20px;
+}
+
+.btn-01{
+    color:#C1C1C1;
+}
+
+.hdireita{
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+
+.cards{
+    background-color: #C3B9FF;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    column-gap: 20px;
+    padding-right: 43px;
+    flex-wrap: wrap ;
+}
+
+.card{
+    background-color: #C3B9FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cardbtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 55px;
+}
+
+.cardbtn-01{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 95px;
+}
+
+.cardimg{
+    padding-right: 20px;
+}
+
+.card-02{
+    background-color: #C3B9FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+   
+}
+
+.card-02 > div > img{
+    padding-top: 20px;
+}
+
+.tela{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    grid-area: r;
+    background-color: #9B93FC;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    height: 53px;
+}

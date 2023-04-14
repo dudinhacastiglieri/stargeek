@@ -9,25 +9,55 @@ a{
 }
 
 .container{
-    width: 100vw;
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 70vh auto;
     grid-template-areas: "h h"
+                         "t t"
                          "c c"
                          "r r";
-}
+                          }
 
 header{
     grid-area: h;
     background-color: #9B93FC;
-    height: 53px;
 }
 
 main{
     grid-area: c;
     background-color: white;
-    height: 41vw;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+form > input{
+    width: 270px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: #c1c1c1;
+}
+
+form > label{
+    display: block;
+    text-align: left;
+    width: 270px;
+}
+
+form > input[type="submit"]{
+    padding: 0px 20px;
+    width: 100px;
+    margin: auto 0;
 }
 
 .btn-01{
@@ -35,8 +65,10 @@ main{
 }
 
 .hdireita{
+    grid-area: t;
     display: flex;
     justify-content: flex-end;
+    padding-top: 40px;
 }
 
 h1{
@@ -56,26 +88,6 @@ main > p{
     color: #0000003d;
     padding: 20px;
     margin-right: 380px;
-    border-radius: 20px 20px 20px 20px;
-}
-
-.bloco2{
-    margin-left: 400px;
-    background-color: #C1C1C1;
-    color: #0000003d;
-    padding: 20px;
-    margin-right: 380px;
-    padding-top: 80px;
-    border-radius: 20px 20px 20px 20px;
-}
-
-.bloco3{
-    margin-left: 400px;
-    background-color: #C1C1C1;
-    color: #0000003d;
-    padding: 20px;
-    margin-right: 380px;
-    border-radius: 20px 20px 20px 20px;
 }
 
 .btn-02 {
@@ -94,3 +106,13 @@ footer{
     padding-left: 15px;
     height: 53px;
 }
+
+.redes-sociais{
+    display: flex;
+    column-gap: 10px;
+   }
+      
+   .redes-sociais img{
+       height: 30px;
+   }
+   

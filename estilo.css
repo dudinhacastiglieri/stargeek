@@ -13,19 +13,32 @@ body{
 }
 
 .container{
-    width: 100vw;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px auto 240px 50px;
+    grid-template-rows: auto auto 31vh 10vh;
     grid-template-areas: "h h"
                          "c c"
                          "p p"
                          "r r";
 }
 
+a{
+  text-decoration: none; 
+  color:black; 
+}
+
 header{
     grid-area: h;
     background-color: #9B93FC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.hdireita{
+    display: flex;
+    column-gap: 10px;
 }
 
 main{
@@ -44,6 +57,7 @@ aside{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 }
 
 aside > p{
@@ -58,57 +72,11 @@ footer{
     padding-left: 15px;
 }
 
-.logo{
-    height: 44px;
-}
-
-.hesquerda {
-    display: flex;
-    align-items: center;
-}
-
-.hdireita {
-    display: flex;
-    align-items: center;
-}
-
-.hdireita > i {
-
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(183, 181, 181);
-    box-shadow: rgba(158, 156, 156, 0.9) 12px 2px 4px;
-}
-
-.btn-01 {
-    color: black;
-    border-radius: 50px;
-    font-weight: 600;
-} 
-
-.btn-01:hover{
-    transform: scale(0.9);
-    transition: 0.5s;
-}
-
-.btn-02{
-    color: black;
-    padding: 10px 40px;
-    border-radius: 50px;
-    font-weight: 600;
-    margin-right: 10px;
-}
-
-.btn-02:hover{
-    transform: scale(0.9);
-    transition: 0.5s;
-}
-
 .redes-sociais{
-
+ display: flex;
+ column-gap: 10px;
 }
    
-
+.redes-sociais img{
+    height: 30px;
+}

@@ -113,3 +113,13 @@ footer{
     padding-left: 15px;
     height: 53px;
 }
+
+.redes-sociais{
+    display: flex;
+    column-gap: 10px;
+   }
+      
+   .redes-sociais img{
+       height: 30px;
+   }
+   

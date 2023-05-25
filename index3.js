@@ -3,19 +3,22 @@ const formulario = document.getElementById("formulario");
 const email = document.getElementById("email");
 const senha = document.getElementById("senha");
 
-formulario.onsubmit = (evt) => { 
+formulario.onsubmit = (evt)=>{
     let dados = JSON.parse(localStorage.getItem("bd"));
+    let logado;
     dados.forEach((elemento) => {
-        if (elemento.email == email.value && elemento.senha == senha.value){
-            msg.innerHTML = "aguarde redirecionando..."
-            evt.preventdefault();
+        if(elemento.emailcliente == email.value && elemento.senhacliente == senha.value){
+            msg.innerHTML = "Aguarde redirecionando..."
             setTimeout(()=>{
-                window.location.assign("catalogo.html");
-            },2000);
+                window.location.assign("index5.html");
+            }, 2000);
+            evt.preventDefault();
+            logado = "ok";
             return true;
-        } else {
-            msg.innerHTML = "usuario ou senhas incorretos!";
-            evt.preventdefault();
+        }
+        if (logado!="ok") {
+            msg.innerHTML = "Usuario ou senha incorretos"
+            evt.preventDefault()
             return null;
         }
     });

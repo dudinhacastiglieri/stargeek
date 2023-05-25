@@ -1,65 +1,52 @@
+const botaomodal = document.getElementById("btn");
+const cards = document.querySelector(".cards");
 const formulario = document.getElementById("formulario");
-const msg = document.querySelector(".mensagem")
 const nome = document.getElementById("nome");
-const email = document.getElementById("email");
-const senha = document.getElementById("senha");
+const descricao = document.getElementById("descricao");
+const foto = document.getElementById("foto");
 
 
-function verificarEmail(email, evento){
-    let dados = JSON.parse(localStorage.getItem("bd"));
-    if (dados == null){
-        criarUsuario(evento);
-    } else {
-        dados.forEach(elemento =>{
-            if (elemento.emailcliente == email){
-                msg.innerHTML="E-mail já existe!";
-                evento.preventDefault();
-            } else {
-                criarUsuario(evento);
-            }
-        }
-        );
-    }  
-}
-
-formulario.onsubmit = (evento) =>{
-    if (nome.value == ""){
-        evento.preventDefault();
-        msg.innerHTML = "Digite seu Nome";
-        nome.focus();
+carregarCatalogo();
+function carregarCatalogo(){
+    let dados = JSON.parse(localStorage.getItem("catalogo"));
+    let divcard = document.createElement("div");
+    if(dados == null){
+        divcard.innerHTML = "<p>Nenhum item cadsatrado</p>";
+        cards.appendChild(divcard);
         return null;
     }
 
-    if (email.value == ""){
-        evento.preventDefault();
-        msg.innerHTML = "Digite seu e-mail";
-        email.focus();
-        return null;
-    }
-
-    if (senha.value == ""){
-        evento.preventDefault();
-        msg.innerHTML = "Digite sua Senha!"
-        senha.focus();
-        return null;
-    }
-    verificarEmail(email.value, evento);
+    dados.forEach((elemento, indice) => {
+        let divcard = document.createElement("div");
+        divcard.setAttribute("class", "card")
+        divcard.innerHTML = `<img src="img/${elemento.foto}"> 
+        <div class="nome">${elemento.nome}</div>
+        <div class="info"><a onclick="editar(${indice})">editar</a>
+        <a onclick="excluir(${indice})">excluir</a></div>
+        </div>`;
+        
+        cards.appendChild(divcard);
+        
+    });
 }
 
-
-function criarUsuario(evento){
-    let dados = JSON.parse(localStorage.getItem("bd")) || [];
-    dados.push(
-        {
-        nomecliente : nome.value,
-        emailcliente : email.value,
-        senhacliente : senha.value
-        }
-    )
-    localStorage.setItem("bd", JSON.stringify(dados));
-    msg.innerHTML ="Usuário Cadastrado com Sucesso";
-    evento.preventDefault();
-    setTimeout(()=>{
-        window.location.assign("cadastrodoitem.html");
-    },2000)
+function excluir(indice){
+    let dados = JSON.parse(localStorage.getItem("catalogo"));
+    if(dados.length == 1)
+    {localStorage.clear("catalogo");}
+    else{
+    dados.splice(indice,1);
+    localStorage.setItem("catalogo", JSON.stringify(dados));
+    }
+    window.location.reload();
 }
+
+function editar(indice){
+    var url ="cadastro.html?peditar=true&indice="+ encodeURIComponent(indice);
+    window.location.href = url;
+}
+
+botaomodal.onclick = () =>{
+    window.location.assign("cadastrodoitem.html");
+}
+

@@ -1,33 +1,41 @@
-const botaomodal = document.getElementById("btn");
 const cards = document.querySelector(".cards");
-const formulario = document.getElementById("formulario");
-const nome = document.getElementById("nome");
-const descricao = document.getElementById("descricao");
-const foto = document.getElementById("foto");
 
+var emaillogado; 
+femailLogado();
 
 carregarCatalogo();
 function carregarCatalogo(){
     let dados = JSON.parse(localStorage.getItem("catalogo"));
     let divcard = document.createElement("div");
     if(dados == null){
-        divcard.innerHTML = "<p>Nenhum item cadsatrado</p>";
+        divcard.innerHTML = "<p>Nenhum item cadastrado</p>";
         cards.appendChild(divcard);
         return null;
     }
 
     dados.forEach((elemento, indice) => {
+        if(elemento.email == emaillogado){ 
         let divcard = document.createElement("div");
         divcard.setAttribute("class", "card")
-        divcard.innerHTML = `<img src="img/${elemento.foto}"> 
-        <div class="nome">${elemento.nome}</div>
-        <div class="info"><a onclick="editar(${indice})">editar</a>
-        <a onclick="excluir(${indice})">excluir</a></div>
+        divcard.innerHTML = `
+        <div class="cardimg">
+        <img src="img/${elemento.foto}"> 
+        </div>
+        <div class="nome">${elemento.nome}
+        <p>${elemento.descricao}</p></div>
+        <div class="cardbtn">
+        <div class="editar"><i class="bi bi-pencil-fill" onclick="editar(${indice})"></i> | </div>
+        <div class="excluir"><i class="bi bi-trash3-fill" onclick="excluir(${indice})"></i></div>
         </div>`;
         
-        cards.appendChild(divcard);
+        cards.appendChild(divcard);}
         
     });
+}
+
+function editar(indice){
+    var url = "cadastrodeitem.html?peditar=true&indice="+encodeURIComponent(indice);
+    window.location.href = url;
 }
 
 function excluir(indice){
@@ -41,12 +49,13 @@ function excluir(indice){
     window.location.reload();
 }
 
-function editar(indice){
-    var url ="cadastro.html?peditar=true&indice="+ encodeURIComponent(indice);
-    window.location.href = url;
+function femailLogado(){
+    let dados = sessionStorage.getItem("logado");
+    if(dados == null){
+        window.location.assign("index3.html");
+    }else{
+        emaillogado = dados;
+    }
 }
 
-botaomodal.onclick = () =>{
-    window.location.assign("cadastrodoitem.html");
-}
 

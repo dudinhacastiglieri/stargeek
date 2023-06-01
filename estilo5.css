@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 *{
     margin: 0;
     padding: 0;
@@ -25,9 +26,6 @@ header{
     display: flex;
 }
 
-.maior{
-    background-color: #C3B9FF;
-}
 
 main{
     grid-area: c;
@@ -60,26 +58,23 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 300px;
+    text-align: center;
 }
 
 .cardbtn{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding-left: 55px;
 }
 
-.cardbtn-01{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 95px;
-}
 
 .cardimg{
-    padding-right: 20px;
+    width: 300px;
+}
+.cardimg img{
+    width: 300px;
 }
 
 .card-02{
@@ -103,6 +98,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    row-gap: 20px;
 }
 
 footer{
